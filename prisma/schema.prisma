@@ -1,0 +1,141 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  CUSTOMER
+  CREATOR
+  ADMIN
+}
+
+enum UserStatus {
+  ACTIVE
+  SUSPENDED
+  PENDING_APPROVAL
+  PENDING_VERIFICATION
+}
+
+model User {
+  id            String    @id @default(uuid())
+  email         String    @unique
+  phone         String?   @unique
+  passwordHash  String?
+  role          Role      @default(CUSTOMER)
+  status        UserStatus @default(PENDING_VERIFICATION)
+  profile       Profile?
+  
+  sentOrders    Order[]   @relation("CustomerOrders")
+  receivedOrders Order[]  @relation("CreatorOrders")
+  reviews       Review[]
+  messages      Message[]
+  
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Profile {
+  id          String  @id @default(uuid())
+  userId      String  @unique
+  user        User    @relation(fields: [userId], references: [id])
+  
+  fullName    String
+  avatarUrl   String?
+  bio         String?
+  
+  skills      String[]
+  portfolio   String[]
+  machinePhotos String[] // Mandatory tools/machine photo for trust
+  hourlyRate  Decimal?
+  available   Boolean @default(true)
+  location    Json?
+  rating      Decimal @default(0)
+  reviewCount Int     @default(0)
+}
+
+enum OrderStatus {
+  CREATED
+  REQUESTED
+  ACCEPTED
+  IN_PROGRESS
+  READY
+  DELIVERED
+  COMPLETED
+  CANCELLED
+}
+
+model Order {
+  id          String      @id @default(uuid())
+  customerId  String
+  customer    User        @relation("CustomerOrders", fields: [customerId], references: [id])
+  creatorId   String
+  creator     User        @relation("CreatorOrders", fields: [creatorId], references: [id])
+  
+  status      OrderStatus @default(CREATED)
+  title       String
+  description String
+  budget      Decimal
+  deadline    DateTime?
+  referenceImages String[]
+  
+  milestones  Milestone[]
+  messages    Message[]
+  review      Review?
+  
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+}
+
+enum MilestoneStatus {
+  PENDING
+  IN_PROGRESS
+  SUBMITTED
+  APPROVED
+  PAID
+}
+
+model Milestone {
+  id          String          @id @default(uuid())
+  orderId     String
+  order       Order           @relation(fields: [orderId], references: [id])
+  
+  title       String
+  amount      Decimal
+  status      MilestoneStatus @default(PENDING)
+  proofImages String[]
+  
+  createdAt   DateTime        @default(now())
+}
+
+model Message {
+  id        String   @id @default(uuid())
+  orderId   String
+  order     Order    @relation(fields: [orderId], references: [id])
+  senderId  String
+  sender    User     @relation(fields: [senderId], references: [id])
+  
+  content   String
+  files     String[]
+  read      Boolean  @default(false)
+  
+  createdAt DateTime @default(now())
+}
+
+model Review {
+  id        String   @id @default(uuid())
+  orderId   String   @unique
+  order     Order    @relation(fields: [orderId], references: [id])
+  
+  authorId  String
+  author    User     @relation(fields: [authorId], references: [id])
+  targetId  String
+  
+  rating    Int
+  comment   String?
+  
+  createdAt DateTime @default(now())
+}
