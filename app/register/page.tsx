@@ -11,6 +11,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { registerUser } from "@/app/actions"
 import { useRouter } from "next/navigation"
+import Link from "next/link"
 
 const formSchema = z.object({
     email: z.string().email(),
@@ -115,6 +116,12 @@ export default function RegisterPage() {
                             <Button type="submit" className="w-full h-14 rounded-full text-lg font-bold glow-border overflow-visible group">
                                 Begin Your Legacy
                             </Button>
+                            <p className="text-center text-xs text-white/40 mt-6">
+                                Already initiated?{" "}
+                                <Link href="/login" className="text-primary hover:underline font-bold">
+                                    Enter Aura
+                                </Link>
+                            </p>
                         </form>
                     </Form>
                 </CardContent>

@@ -50,6 +50,10 @@ export class UserService {
     async getPendingCreators() {
         return userRepo.getPendingCreators()
     }
+
+    async updateProfile(userId: string, data: any) {
+        return userRepo.updateProfile(userId, data)
+    }
 }
 
 export const userService = new UserService()

@@ -6,6 +6,8 @@ import Link from "next/link";
 import { auth } from "@/auth";
 import { handleSignOut } from "@/app/actions";
 import { Button } from "@/components/ui/button";
+import { Toaster } from "sonner";
+import { Badge } from "@/components/ui/badge";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,27 +32,35 @@ export default async function RootLayout({
   const session = await auth();
 
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className="dark" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${playfair.variable} antialiased min-h-screen pt-20`}
+        className={`${geistSans.variable} ${playfair.variable} antialiased min-h-screen pt-20 selection:bg-primary/30 selection:text-primary-foreground`}
       >
         <AuthProvider>
-          <nav className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/5 px-6 py-4 flex items-center justify-between">
-            <Link href="/" className="text-2xl font-bold tracking-tighter text-gradient font-[family-name:var(--font-playfair)]">
+          <nav className="fixed top-0 left-0 right-0 z-50 glass px-6 py-5 flex items-center justify-between border-b border-white/[0.06]">
+            <Link href="/" className="text-xl font-bold tracking-[0.2em] font-[family-name:var(--font-playfair)]">
               AURACRAFT
             </Link>
-            <div className="flex items-center gap-6">
-              <Link href="/creators" className="text-sm font-medium hover:text-primary transition-colors">Find Artists</Link>
+            <div className="flex items-center gap-8">
+              <Link href="/creators" className="text-xs font-bold uppercase tracking-widest text-white/50 hover:text-primary transition-colors">Artisans</Link>
               {session ? (
                 <>
-                  <Link href="/dashboard" className="text-sm font-medium hover:text-primary transition-colors">Dashboard</Link>
+                  <Badge variant="outline" className={`
+                    text-[10px] font-bold uppercase tracking-widest px-3 py-1 border 
+                    ${(session.user as any).role === 'CREATOR'
+                      ? "border-primary text-primary bg-primary/10 shadow-[0_0_10px_rgba(255,215,0,0.2)]"
+                      : "border-blue-400 text-blue-400 bg-blue-400/10"}
+                  `}>
+                    {(session.user as any).role === 'CREATOR' ? "Artisan" : "Patron"}
+                  </Badge>
+                  <Link href="/dashboard" className="text-xs font-bold uppercase tracking-widest text-white/50 hover:text-primary transition-colors">Dashboard</Link>
                   <form action={handleSignOut}>
-                    <Button variant="ghost" size="sm" className="text-xs">Sign Out</Button>
+                    <Button variant="ghost" size="sm" className="text-[10px] font-bold uppercase tracking-[0.1em] text-white/30 hover:text-destructive transition-colors">Sign Out</Button>
                   </form>
                 </>
               ) : (
                 <Link href="/register">
-                  <Button size="sm" className="rounded-full px-6">Join Aura</Button>
+                  <Button size="sm" className="btn-premium px-6 h-9 text-[10px] uppercase tracking-widest">Join Aura</Button>
                 </Link>
               )}
             </div>
@@ -58,6 +68,7 @@ export default async function RootLayout({
           <main>
             {children}
           </main>
+          <Toaster position="top-center" richColors />
         </AuthProvider>
       </body>
     </html>

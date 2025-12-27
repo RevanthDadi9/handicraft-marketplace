@@ -55,9 +55,20 @@ export class UserRepository {
     }
 
     async updateProfile(userId: string, data: any) {
-        return prisma.profile.update({
+        return prisma.profile.upsert({
             where: { userId },
-            data,
+            update: data,
+            create: {
+                userId,
+                fullName: data.fullName || "Unnamed Artisan",
+                bio: data.bio || "No bio yet.",
+                skills: data.skills || [],
+                location: data.location || { address: "Unknown" },
+                available: data.available ?? false,
+                portfolio: data.portfolio || [],
+                machinePhotos: data.machinePhotos || [],
+                ...data
+            }
         })
     }
 

@@ -4,6 +4,7 @@ import { useState } from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
+import { toast } from "sonner"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -29,6 +30,8 @@ export function RequestServiceModal({
 }) {
     const [open, setOpen] = useState(false)
     const [images, setImages] = useState<string[]>([])
+    // Add loading state locally since server action doesn't block form hook
+    const [isSubmitting, setIsSubmitting] = useState(false)
     const router = useRouter()
 
     const form = useForm<any>({
@@ -42,12 +45,23 @@ export function RequestServiceModal({
     })
 
     async function onSubmit(values: any) {
-        const res = await createOrder({ ...values, creatorId, referenceImages: images })
-        if (res?.error) {
-            alert(res.error)
-        } else {
-            setOpen(false)
-            router.push("/dashboard")
+        setIsSubmitting(true)
+        try {
+            const res = await createOrder({ ...values, creatorId, referenceImages: images })
+            if (res?.error) {
+                toast.error(res.error)
+            } else {
+                toast.success("Request sent successfully!", {
+                    description: "User will be notified immediately."
+                })
+                setOpen(false)
+                router.push("/dashboard")
+                router.refresh()
+            }
+        } catch (err) {
+            toast.error("Something went wrong. Please try again.")
+        } finally {
+            setIsSubmitting(false)
         }
     }
 
@@ -129,16 +143,24 @@ export function RequestServiceModal({
                             </div>
                             <UploadButton
                                 endpoint="imageUploader"
+                                appearance={{
+                                    button: "ut-ready:bg-primary ut-uploading:cursor-not-allowed rounded-r-none bg-primary/80 after:bg-primary cursor-pointer hover:bg-primary/90 transition-all duration-300",
+                                    container: "w-full flex-row rounded-md border border-input bg-transparent",
+                                    allowedContent: "flex h-8 flex-col items-center justify-center px-2 text-white/50 ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+                                }}
                                 onClientUploadComplete={(res: any) => {
                                     setImages(prev => [...prev, ...res.map((r: any) => r.url)])
+                                    toast.success("Image uploaded")
                                 }}
                                 onUploadError={(error: Error) => {
-                                    alert(`ERROR! ${error.message}`);
+                                    toast.error(`Upload failed: ${error.message}`)
                                 }}
                             />
                         </div>
 
-                        <Button type="submit" className="w-full">Send Request</Button>
+                        <Button type="submit" className="w-full" disabled={isSubmitting}>
+                            {isSubmitting ? "Sending Request..." : "Send Request"}
+                        </Button>
                     </form>
                 </Form>
             </DialogContent>

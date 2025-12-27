@@ -116,7 +116,7 @@ export default async function OrderDetailsPage({ params }: { params: Promise<{ i
 
                                 {isCreator && order.status === 'ACCEPTED' && (
                                     <form action={updateStatus.bind(null, "IN_PROGRESS")}>
-                                        <Button type="submit" className="rounded-full px-8 h-12 bg-white/10 hover:bg-white/20">Begin Craftsmanship</Button>
+                                        <Button type="submit" className="rounded-full px-8 h-12 bg-primary hover:bg-primary/80 text-black font-bold shadow-[0_0_20px_rgba(255,215,0,0.2)] transition-all transform hover:scale-105">Begin Craftsmanship</Button>
                                     </form>
                                 )}
 
@@ -134,8 +134,15 @@ export default async function OrderDetailsPage({ params }: { params: Promise<{ i
 
                                 {!isCreator && order.status === 'DELIVERED' && (
                                     <form action={updateStatus.bind(null, "COMPLETED")}>
-                                        <Button type="submit" className="rounded-full px-12 h-14 bg-green-500 hover:bg-green-600 text-black font-bold shadow-[0_0_20px_rgba(34,197,94,0.3)]">Validate & Finalize Legacy</Button>
+                                        <Button type="submit" className="rounded-full px-12 h-14 bg-green-500 hover:bg-green-600 text-black font-bold shadow-[0_0_20px_rgba(34,197,94,0.3)] cursor-pointer">Validate & Finalize Legacy</Button>
                                     </form>
+                                )}
+
+                                {isCreator && order.status === 'DELIVERED' && (
+                                    <div className="flex items-center gap-3 px-6 py-4 rounded-xl bg-yellow-500/10 border border-yellow-500/20 text-yellow-500">
+                                        <div className="w-2 h-2 rounded-full bg-yellow-500 animate-pulse" />
+                                        <span className="text-sm font-bold tracking-wide uppercase">Awaiting Patron Confirmation</span>
+                                    </div>
                                 )}
 
                                 {order.status === 'COMPLETED' && (

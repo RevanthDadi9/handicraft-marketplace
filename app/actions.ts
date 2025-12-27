@@ -89,6 +89,48 @@ export async function approveCreator(creatorId: string) {
     }
 }
 
+export async function updateCreatorProfile(userId: string, formData: any) {
+    const session = await auth()
+    if (!session?.user || session.user.id !== userId) return { error: "Unauthorized" }
+
+    // Re-use schema or create partial
+    const updateSchema = z.object({
+        fullName: z.string().min(2).optional(),
+        bio: z.string().min(10).optional(),
+        skills: z.string().optional(),
+        location: z.string().optional(),
+        portfolio: z.array(z.string()).optional(),
+        machinePhotos: z.array(z.string()).optional(),
+        hourlyRate: z.coerce.number().optional(),
+        available: z.boolean().optional(),
+    })
+
+    const validatedFields = updateSchema.safeParse(formData)
+    if (!validatedFields.success) return { error: validatedFields.error.format() }
+
+    const data = validatedFields.data
+    const updateData: any = { ...data }
+
+    // Transform skills string to array if present
+    if (data.skills) {
+        updateData.skills = data.skills.split(",").map(s => s.trim())
+    }
+    // Transform location string to object if present
+    if (data.location) {
+        updateData.location = { address: data.location }
+    }
+
+    try {
+        await userService.updateProfile(userId, updateData)
+        revalidatePath("/dashboard")
+        revalidatePath(`/creators/${userId}`)
+        return { success: true }
+    } catch (error) {
+        console.error(error)
+        return { error: "Failed to update profile" }
+    }
+}
+
 export async function handleSignOut() {
     await signOut({ redirectTo: "/" })
 }

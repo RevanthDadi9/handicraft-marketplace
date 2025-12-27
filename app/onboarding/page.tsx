@@ -12,6 +12,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { createCreatorProfile } from "@/app/actions"
 import { useRouter } from "next/navigation"
 import { useSession } from "next-auth/react"
+import { toast } from "sonner"
 
 import { UploadButton } from "@/lib/uploadthing"
 
@@ -183,9 +184,13 @@ export default function OnboardingPage() {
                                                 onClientUploadComplete={(res) => {
                                                     const urls = res.map(f => f.url)
                                                     form.setValue("portfolio", [...portfolio, ...urls])
+                                                    toast.success("Masterpiece uploaded successfully")
+                                                }}
+                                                onUploadError={(error: Error) => {
+                                                    toast.error(`Upload failed: ${error.message}`)
                                                 }}
                                                 appearance={{
-                                                    button: "bg-primary text-black font-bold rounded-full px-8",
+                                                    button: "bg-primary text-black font-bold rounded-full px-8 cursor-pointer hover:bg-primary/90 transition-all",
                                                     allowedContent: "text-white/20 uppercase text-[8px] tracking-widest"
                                                 }}
                                             />
@@ -203,9 +208,13 @@ export default function OnboardingPage() {
                                                 onClientUploadComplete={(res) => {
                                                     const urls = res.map(f => f.url)
                                                     form.setValue("machinePhotos", [...machinePhotos, ...urls])
+                                                    toast.success("Equipment photo uploaded")
+                                                }}
+                                                onUploadError={(error: Error) => {
+                                                    toast.error(`Upload failed: ${error.message}`)
                                                 }}
                                                 appearance={{
-                                                    button: "bg-accent text-white font-bold rounded-full px-8",
+                                                    button: "bg-accent text-white font-bold rounded-full px-8 cursor-pointer hover:bg-accent/90 transition-all",
                                                     allowedContent: "text-white/20 uppercase text-[8px] tracking-widest"
                                                 }}
                                             />
