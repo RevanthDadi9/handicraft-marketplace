@@ -42,7 +42,10 @@ export default async function AdminPage() {
                                     <CardDescription>{creator.email} • {creator.profile?.location as any ? (creator.profile?.location as any).address : "No location"}</CardDescription>
                                 </div>
                                 <div className="flex gap-4">
-                                    <form action={approveCreator.bind(null, creator.id)}>
+                                    <form action={async () => {
+                                        "use server"
+                                        await approveCreator(creator.id)
+                                    }}>
                                         <Button type="submit" className="bg-primary hover:bg-primary/80 text-black font-bold px-8 rounded-full shadow-[0_0_20px_rgba(255,215,0,0.2)]">
                                             Approve Artisan
                                         </Button>
