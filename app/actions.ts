@@ -73,7 +73,7 @@ export async function createCreatorProfile(userId: string, formData: z.infer<typ
     }
 }
 
-export async function approveCreator(creatorId: string) {
+export async function approveCreator(creatorId: string, _formData?: FormData) {
     const session = await auth()
     if (!session?.user) return { error: "Unauthorized" }
 
