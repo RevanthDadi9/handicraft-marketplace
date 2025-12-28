@@ -47,11 +47,13 @@ export default async function RootLayout({
                 <>
                   <Badge variant="outline" className={`
                     text-[10px] font-bold uppercase tracking-widest px-3 py-1 border 
-                    ${(session.user as any)?.role === 'CREATOR'
-                      ? "border-primary text-primary bg-primary/10 shadow-[0_0_10px_rgba(255,215,0,0.2)]"
-                      : "border-blue-400 text-blue-400 bg-blue-400/10"}
+                    ${(session.user as any)?.role === 'ADMIN'
+                      ? "border-red-500 text-red-500 bg-red-500/10 shadow-[0_0_10px_rgba(239,68,68,0.2)]"
+                      : (session.user as any)?.role === 'CREATOR'
+                        ? "border-primary text-primary bg-primary/10 shadow-[0_0_10px_rgba(255,215,0,0.2)]"
+                        : "border-blue-400 text-blue-400 bg-blue-400/10"}
                   `}>
-                    {(session.user as any)?.role === 'CREATOR' ? "Artisan" : "Patron"}
+                    {(session.user as any)?.role === 'ADMIN' ? "Elder" : (session.user as any)?.role === 'CREATOR' ? "Artisan" : "Patron"}
                   </Badge>
                   <Link href="/dashboard" className="text-xs font-bold uppercase tracking-widest text-white/50 hover:text-primary transition-colors">Dashboard</Link>
                   <form action={handleSignOut}>

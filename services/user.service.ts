@@ -9,6 +9,7 @@ export class UserService {
             email: data.email,
             passwordHash: hashedPassword,
             role: data.role,
+            status: data.role === 'CUSTOMER' ? UserStatus.ACTIVE : undefined
         })
     }
 

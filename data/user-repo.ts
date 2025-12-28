@@ -30,7 +30,7 @@ export class UserRepository {
         })
     }
 
-    async create(data: { email: string; passwordHash: string; role: Role }) {
+    async create(data: { email: string; passwordHash: string; role: Role; status?: UserStatus }) {
         return prisma.user.create({ data })
     }
 
@@ -76,7 +76,7 @@ export class UserRepository {
         return prisma.user.findMany({
             where: {
                 role: Role.CREATOR,
-                status: "ACTIVE" // Only approved creators are public
+                status: UserStatus.ACTIVE // Only approved creators are public
             },
             include: { profile: true },
         })
