@@ -81,7 +81,9 @@ export async function approveCreator(creatorId: string, _formData?: FormData) {
         await userService.updateStatus(creatorId, "ACTIVE" as any)
         revalidatePath("/")
         revalidatePath("/creators")
+        revalidatePath(`/creators/${creatorId}`)
         revalidatePath("/admin")
+        revalidatePath("/dashboard")
         return { success: true }
     } catch (error) {
         console.error(error)

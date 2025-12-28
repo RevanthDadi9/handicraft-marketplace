@@ -115,13 +115,44 @@ export function DashboardClient({ user, orders }: { user: any, orders: any[] }) 
             {activeTab === "overview" && (
                 <div className="space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-500">
                     {/* Pending Status Banner */}
-                    {user.role === "CREATOR" && user.status === "PENDING_APPROVAL" && (
-                        <div className="p-8 glass border-primary/20 bg-primary/[0.02] rounded-xl flex flex-col md:flex-row md:items-center justify-between gap-6">
-                            <div className="space-y-2">
-                                <h3 className="text-primary font-bold uppercase tracking-widest text-[10px]">Review in Progress</h3>
-                                <p className="text-sm text-foreground/70 font-light leading-relaxed">Our curation team is reviewing your profile. You will be notified once your status is updated to Active Artisan.</p>
-                            </div>
-                            <Badge className="bg-primary/10 text-primary border-primary/20 text-[9px] font-bold uppercase tracking-widest px-4 h-8 w-fit shrink-0">Pending Approval</Badge>
+                    {user.role === "CREATOR" && (
+                        <div className="space-y-4">
+                            {user.status === "PENDING_VERIFICATION" && (
+                                <div className="p-8 glass border-yellow-500/20 bg-yellow-500/[0.02] rounded-xl flex flex-col md:flex-row md:items-center justify-between gap-6 overflow-hidden relative">
+                                    <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-500/5 blur-3xl -mr-16 -mt-16" />
+                                    <div className="space-y-2 relative z-10">
+                                        <h3 className="text-yellow-500 font-bold uppercase tracking-widest text-[10px]">Profile Incomplete</h3>
+                                        <p className="text-sm text-foreground/70 font-light leading-relaxed">Save your profile details below to submit your masterpieces for review by the Elders.</p>
+                                    </div>
+                                    <Badge className="bg-yellow-500/10 text-yellow-500 border-yellow-500/20 text-[9px] font-bold uppercase tracking-widest px-4 h-8 w-fit shrink-0">Incomplete</Badge>
+                                </div>
+                            )}
+
+                            {user.status === "PENDING_APPROVAL" && (
+                                <div className="p-8 glass border-primary/20 bg-primary/[0.02] rounded-xl flex flex-col md:flex-row md:items-center justify-between gap-6 overflow-hidden relative">
+                                    <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 blur-3xl -mr-16 -mt-16" />
+                                    <div className="space-y-2 relative z-10">
+                                        <h3 className="text-primary font-bold uppercase tracking-widest text-[10px]">Consecration in Progress</h3>
+                                        <p className="text-sm text-foreground/70 font-light leading-relaxed">The Elders are currently reviewing your workspace and masteries. You will be activated shortly.</p>
+                                    </div>
+                                    <Badge className="bg-primary/10 text-primary border-primary/20 text-[9px] font-bold uppercase tracking-widest px-4 h-8 w-fit shrink-0">Pending Approval</Badge>
+                                </div>
+                            )}
+
+                            {user.status === "ACTIVE" && (
+                                <div className="p-8 glass border-green-500/20 bg-green-500/[0.02] rounded-xl flex flex-col md:flex-row md:items-center justify-between gap-6 overflow-hidden relative">
+                                    <div className="absolute top-0 right-0 w-32 h-32 bg-green-500/5 blur-3xl -mr-16 -mt-16" />
+                                    <div className="space-y-2 relative z-10">
+                                        <h3 className="text-green-500 font-bold uppercase tracking-widest text-[10px]">Artisan Activated</h3>
+                                        <p className="text-sm text-foreground/70 font-light leading-relaxed">Your shop is now live in the collective. Patrons can discover and request your masteries.</p>
+                                    </div>
+                                    <div className="flex gap-4 relative z-10">
+                                        <Link href={`/creators/${user.id}`}>
+                                            <Button size="sm" variant="outline" className="border-green-500/20 text-green-500 hover:bg-green-500/10 h-8 rounded-full text-[9px] font-bold uppercase tracking-widest px-4">View Public Profile</Button>
+                                        </Link>
+                                    </div>
+                                </div>
+                            )}
                         </div>
                     )}
 
