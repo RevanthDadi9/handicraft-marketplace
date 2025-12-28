@@ -86,7 +86,9 @@ export class UserRepository {
         return prisma.user.findMany({
             where: {
                 role: Role.CREATOR,
-                status: "PENDING_APPROVAL" as any
+                status: {
+                    in: ["PENDING_APPROVAL", "PENDING_VERIFICATION"] as any
+                }
             },
             include: { profile: true },
         })
