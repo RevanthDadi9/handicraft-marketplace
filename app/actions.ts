@@ -122,7 +122,15 @@ export async function updateCreatorProfile(userId: string, formData: any) {
 
     try {
         await userService.updateProfile(userId, updateData)
+
+        // Ensure they are moved to PENDING_APPROVAL if they were just registered
+        const user = await userService.getCreatorProfile(userId)
+        if (user && user.status === "PENDING_VERIFICATION") {
+            await userService.updateStatus(userId, "PENDING_APPROVAL" as any)
+        }
+
         revalidatePath("/dashboard")
+        revalidatePath("/admin")
         revalidatePath(`/creators/${userId}`)
         return { success: true }
     } catch (error) {
