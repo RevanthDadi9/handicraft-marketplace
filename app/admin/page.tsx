@@ -15,6 +15,7 @@ export default async function AdminPage() {
     // In production, check role: if (session?.user?.role !== 'ADMIN') redirect('/')
     // For now, allow access if logged in for testing, or add a simple check
     if (!session?.user) redirect("/api/auth/signin")
+    if ((session.user as any).role !== 'ADMIN') redirect("/")
 
     const pendingCreators = await userService.getPendingCreators()
 
