@@ -55,6 +55,9 @@ export default async function RootLayout({
                   `}>
                     {(session.user as any)?.role === 'ADMIN' ? "Elder" : (session.user as any)?.role === 'CREATOR' ? "Artisan" : "Patron"}
                   </Badge>
+                  {(session.user as any)?.role === 'ADMIN' && (
+                    <Link href="/admin" className="text-xs font-bold uppercase tracking-widest text-red-500/70 hover:text-red-500 transition-colors">Council</Link>
+                  )}
                   <Link href="/dashboard" className="text-xs font-bold uppercase tracking-widest text-white/50 hover:text-primary transition-colors">Dashboard</Link>
                   <form action={handleSignOut}>
                     <Button variant="ghost" size="sm" className="text-[10px] font-bold uppercase tracking-[0.1em] text-white/30 hover:text-destructive transition-colors">Sign Out</Button>
