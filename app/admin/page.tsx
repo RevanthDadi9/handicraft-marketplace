@@ -57,42 +57,77 @@ export default async function AdminPage() {
                                 </div>
                             </CardHeader>
                             <CardContent className="p-8 space-y-8">
-                                <div className="grid md:grid-cols-2 gap-8">
-                                    <div className="space-y-4">
-                                        <h4 className="text-[10px] font-bold tracking-widest uppercase text-white/40">Manifesto</h4>
-                                        <p className="text-sm italic leading-relaxed text-muted-foreground">{creator.profile?.bio}</p>
+                                <div className="grid lg:grid-cols-3 gap-12">
+                                    {/* Column 1: Manifesto & Masteries */}
+                                    <div className="space-y-8">
+                                        <div className="space-y-4">
+                                            <h4 className="text-[10px] font-bold tracking-widest uppercase text-white/40">Manifesto</h4>
+                                            <p className="text-sm italic leading-relaxed text-muted-foreground">{creator.profile?.bio || "No manifesto provided."}</p>
+                                        </div>
 
-                                        <h4 className="text-[10px] font-bold tracking-widest uppercase text-white/40 mt-6">Masteries</h4>
-                                        <div className="flex flex-wrap gap-2">
-                                            {creator.profile?.skills.map(skill => (
-                                                <Badge key={skill} variant="secondary" className="bg-white/5 text-[10px] uppercase tracking-wider">{skill}</Badge>
-                                            ))}
+                                        <div className="space-y-4">
+                                            <h4 className="text-[10px] font-bold tracking-widest uppercase text-white/40">Masteries</h4>
+                                            <div className="flex flex-wrap gap-2">
+                                                {creator.profile?.skills.length ? creator.profile.skills.map(skill => (
+                                                    <Badge key={skill} variant="secondary" className="bg-white/5 text-[10px] uppercase tracking-wider">{skill}</Badge>
+                                                )) : <span className="text-xs italic text-white/20">No masteries listed.</span>}
+                                            </div>
+                                        </div>
+
+                                        <div className="space-y-4 pt-4 border-t border-white/5">
+                                            <h4 className="text-[10px] font-bold tracking-widest uppercase text-white/40">Vitals</h4>
+                                            <div className="space-y-3">
+                                                <div className="flex justify-between items-center text-xs">
+                                                    <span className="text-white/40">Hourly Honorarium</span>
+                                                    <span className="font-bold text-primary">${Number(creator.profile?.hourlyRate || 0)}/hr</span>
+                                                </div>
+                                                <div className="flex justify-between items-center text-xs">
+                                                    <span className="text-white/40">Current Availability</span>
+                                                    <Badge variant="outline" className={creator.profile?.available ? "border-green-500/30 text-green-500" : "border-red-500/30 text-red-500"}>
+                                                        {creator.profile?.available ? "Ready to Craft" : "Occupied"}
+                                                    </Badge>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 
+                                    {/* Column 2: Masterpieces */}
                                     <div className="space-y-6">
-                                        <div>
-                                            <h4 className="text-[10px] font-bold tracking-widest uppercase text-white/40 mb-4 flex items-center gap-2">
-                                                <ImageIcon className="w-3 h-3" /> Masterpieces (Portfolio)
-                                            </h4>
-                                            <div className="grid grid-cols-3 gap-2">
-                                                {creator.profile?.portfolio.map((url, i) => (
-                                                    <img key={i} src={url} alt="Portfolio" className="w-full aspect-square object-cover rounded-lg border border-white/5" />
-                                                ))}
-                                                {creator.profile?.portfolio.length === 0 && <p className="text-[10px] text-yellow-500/50 italic">No masterpieces provided.</p>}
-                                            </div>
+                                        <h4 className="text-[10px] font-bold tracking-widest uppercase text-white/40 flex items-center gap-2">
+                                            <ImageIcon className="w-3 h-3" /> Masterpieces (Portfolio)
+                                        </h4>
+                                        <div className="grid grid-cols-2 gap-3">
+                                            {creator.profile?.portfolio.map((url: string, i: number) => (
+                                                <a key={i} href={url} target="_blank" rel="noreferrer" className="block relative group aspect-square overflow-hidden rounded-xl border border-white/5">
+                                                    <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-all z-10" />
+                                                    <img src={url} alt="Portfolio" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                                                </a>
+                                            ))}
+                                            {(!creator.profile?.portfolio || creator.profile.portfolio.length === 0) && (
+                                                <div className="col-span-2 h-32 flex items-center justify-center border border-dashed border-white/10 rounded-xl">
+                                                    <p className="text-[10px] text-yellow-500/50 italic">No masterpieces provided.</p>
+                                                </div>
+                                            )}
                                         </div>
+                                    </div>
 
-                                        <div>
-                                            <h4 className="text-[10px] font-bold tracking-widest uppercase text-white/40 mb-4 flex items-center gap-2">
-                                                <ImageIcon className="w-3 h-3" /> The Loom (Setup/Machinery)
-                                            </h4>
-                                            <div className="grid grid-cols-3 gap-2">
-                                                {creator.profile?.machinePhotos.map((url, i) => (
-                                                    <img key={i} src={url} alt="Machine" className="w-full aspect-square object-cover rounded-lg border border-white/5" />
-                                                ))}
-                                                {creator.profile?.machinePhotos.length === 0 && <p className="text-[10px] text-yellow-500/50 italic">No tool photos provided.</p>}
-                                            </div>
+                                    {/* Column 3: The Loom */}
+                                    <div className="space-y-6">
+                                        <h4 className="text-[10px] font-bold tracking-widest uppercase text-white/40 flex items-center gap-2">
+                                            <ImageIcon className="w-3 h-3" /> The Loom (Setup/Machinery)
+                                        </h4>
+                                        <div className="grid grid-cols-2 gap-3">
+                                            {creator.profile?.machinePhotos.map((url: string, i: number) => (
+                                                <a key={i} href={url} target="_blank" rel="noreferrer" className="block relative group aspect-square overflow-hidden rounded-xl border border-white/5">
+                                                    <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-all z-10" />
+                                                    <img src={url} alt="Machine" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                                                </a>
+                                            ))}
+                                            {(!creator.profile?.machinePhotos || creator.profile.machinePhotos.length === 0) && (
+                                                <div className="col-span-2 h-32 flex items-center justify-center border border-dashed border-white/10 rounded-xl">
+                                                    <p className="text-[10px] text-yellow-500/50 italic">No tool photos provided.</p>
+                                                </div>
+                                            )}
                                         </div>
                                     </div>
                                 </div>
