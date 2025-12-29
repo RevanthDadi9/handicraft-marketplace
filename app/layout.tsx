@@ -48,11 +48,17 @@ export default async function RootLayout({
       >
         <AuthProvider>
           <nav className="fixed top-0 left-0 right-0 z-50 glass px-6 py-5 flex items-center justify-between border-b border-white/[0.06]">
-            <Link href="/" className="text-xl font-bold tracking-[0.2em] font-[family-name:var(--font-playfair)]">
-              KALASYNC
+            <Link href="/" className="logo-container group transition-all duration-300 hover:scale-102 active:scale-98">
+              <div className="logo-icon-wrapper">
+                <div className="logo-aura"></div>
+                <img src="/icon.png" alt="Logo" className="logo-icon-animate" />
+              </div>
+              <span className="text-xl font-bold tracking-[0.2em] font-[family-name:var(--font-playfair)]">
+                KALASYNC
+              </span>
             </Link>
             <div className="flex items-center gap-8">
-              <Link href="/creators" className="text-xs font-bold uppercase tracking-widest text-white/50 hover:text-primary transition-colors">Artisans</Link>
+              <Link href="/creators" className="text-[10px] font-bold uppercase tracking-widest text-white/50 hover:text-primary transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0">Artisans</Link>
               {session?.user ? (
                 <>
                   <Badge variant="outline" className={`
