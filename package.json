@@ -1,5 +1,5 @@
 {
-  "name": "creatorsaura",
+  "name": "kalasync",
   "prisma": {
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },

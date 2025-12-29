@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
     if (!creator || !creator.profile) return { title: 'Creator Not Found' }
 
     return {
-        title: `${creator.profile.fullName} | CreatorsAura Artist`,
+        title: `${creator.profile.fullName} | KalaSync Artist`,
         description: creator.profile.bio || `View the boutique handmade portfolio of ${creator.profile.fullName}.`,
     }
 }

@@ -1,6 +1,6 @@
-# CreatorsAura Database & User Management Guide
+# KalaSync Database & User Management Guide
 
-This guide details how to manage the CreatorsAura database and monitor the lifecycle of artisans and patrons within our "Managed Marketplace."
+This guide details how to manage the KalaSync database and monitor the lifecycle of artisans and patrons within our "Managed Marketplace."
 
 ## 1. Visual Database Management (Prisma Studio)
 For direct, real-time access to the database without writing SQL, we use **Prisma Studio**. This is the recommended way to view all "enrolled" users, their raw profiles, and order statuses.

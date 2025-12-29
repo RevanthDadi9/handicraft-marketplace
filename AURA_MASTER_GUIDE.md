@@ -1,12 +1,12 @@
-# 🧶 CreatorsAura: System Operations & Master Guide
+# 🧶 KalaSync: System Operations & Master Guide
 
-Welcome to the modernized **CreatorsAura** marketplace. This document provides a comprehensive overview of how the system operates, the technical architecture, and instructions for running the platform.
+Welcome to the modernized **KalaSync** marketplace. This document provides a comprehensive overview of how the system operates, the technical architecture, and instructions for running the platform.
 
 ---
 
 ## 🏛️ System Architecture
 
-CreatorsAura uses a **Modular Hexagonal-Lite Architecture**, separating concerns into three distinct layers to ensure scalability and maintainability.
+KalaSync uses a **Modular Hexagonal-Lite Architecture**, separating concerns into three distinct layers to ensure scalability and maintainability.
 
 ```mermaid
 graph TD
@@ -121,7 +121,7 @@ Users browse the **Find Artists** gallery. The UI uses `CreatorCard` with 3D hov
 
 ---
 
-## 🎨 Design Philosophy: "CreatorsAura Luxury"
+## 🎨 Design Philosophy: "KalaSync Luxury"
 - **Obsidian Foundation**: Deep dark themes for focus and premium feel.
 - **Aura Gold**: Used sparingly for high-value actions and typography.
 - **Glassmorphism**: Backdrop blurs and subtle borders to create depth and sophistication.

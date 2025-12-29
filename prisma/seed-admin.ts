@@ -4,7 +4,7 @@ import bcrypt from 'bcryptjs'
 const prisma = new PrismaClient()
 
 async function main() {
-    const email = 'admin@creatorsaura.in'
+    const email = 'admin@kalasync.in'
     const password = 'adminpassword123'
     const hashedPassword = await bcrypt.hash(password, 10)
 
@@ -20,7 +20,7 @@ async function main() {
             profile: {
                 create: {
                     fullName: 'Grand Elder',
-                    bio: 'Guardian of the CreatorsAura Collective.',
+                    bio: 'Guardian of the KalaSync Collective.',
                     skills: ['Administration'],
                     machinePhotos: [], // Not needed for admin but schema requires array
                     portfolio: []

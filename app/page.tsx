@@ -1,29 +1,51 @@
 import { auth } from "@/auth";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { ArrowRight, Scissors, Palette, Sparkles, Layers, ShieldCheck, Zap, Globe } from "lucide-react";
+import { ArrowRight, Sparkles, ShieldCheck, Zap, Globe } from "lucide-react";
 
 export default async function Home() {
   const session = await auth();
 
   return (
-    <div className="relative">
-      {/* Refined Hero Section */}
+    <div className="relative overflow-hidden">
+      {/* Living Workshop Background Elements */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Animated Artisan Shot 1: Pottery */}
+        <div className="absolute top-20 -left-20 w-64 h-64 md:w-96 md:h-96 opacity-20 blur-[2px] animate-float-slow rotate-12">
+          <img src="/creator-pottery.png" alt="Artisan at work" className="w-full h-full object-cover rounded-3xl grayscale hover:grayscale-0 transition-all duration-1000" />
+        </div>
+
+        {/* Animated Artisan Shot 2: Weaving */}
+        <div className="absolute bottom-40 -right-20 w-64 h-64 md:w-96 md:h-96 opacity-20 blur-[1px] animate-float-delayed -rotate-12">
+          <img src="/creator-weaving.png" alt="Weaving loom" className="w-full h-full object-cover rounded-3xl grayscale hover:grayscale-0 transition-all duration-1000" />
+        </div>
+
+        {/* Animated Artisan Shot 3: Embroidery */}
+        <div className="absolute top-[60%] left-[10%] w-48 h-48 opacity-10 blur-[3px] animate-pulse-slow">
+          <img src="/creator-embroidery.png" alt="Embroidery work" className="w-full h-full object-cover rounded-full grayscale" />
+        </div>
+
+        {/* Dynamic Light Rays */}
+        <div className="absolute top-0 right-[20%] w-[1px] h-full bg-gradient-to-b from-transparent via-primary/20 to-transparent rotate-12"></div>
+        <div className="absolute top-0 left-[30%] w-[1px] h-full bg-gradient-to-b from-transparent via-primary/10 to-transparent -rotate-12"></div>
+      </div>
+
+      {/* Hero Section */}
       <section className="relative pt-32 pb-40 px-6">
         <div className="container mx-auto text-center relative z-10">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass border border-white/[0.08] mb-10">
-            <Sparkles size={12} className="text-primary" />
-            <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/50">The Future of Craft</span>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass border border-white/[0.08] mb-10 shadow-[0_0_20px_rgba(197,160,89,0.1)]">
+            <Sparkles size={12} className="text-primary animate-pulse" />
+            <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/50">Synchronizing Global Talent</span>
           </div>
 
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight mb-10 leading-[1.1] font-[family-name:var(--font-playfair)]">
-            Elevating the <br />
-            <span className="text-gold-gradient italic">Art of Handmade</span>
+            Mastery in <br />
+            <span className="text-gold-gradient italic">Perfect Sync</span>
           </h1>
 
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-14 leading-relaxed font-light">
-            A curated collective of elite artisans. Discover bespoke services
-            and handcrafted excellence tailored to your unique vision.
+            Welcome to <span className="text-white font-medium">KalaSync</span>. A curated collective where
+            traditional craftsmanship meets digital precision. Connect with the world's finest artisans.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
@@ -43,47 +65,47 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Professional Feature Grid */}
-      <section className="py-32 px-6 border-y border-white/[0.05] bg-white/[0.01]">
+      {/* Brand Pillar Section */}
+      <section className="py-32 px-6 border-y border-white/[0.05] bg-white/[0.01] relative overflow-hidden">
         <div className="container mx-auto">
           <div className="text-center mb-20">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-[family-name:var(--font-playfair)]">The Artisan Standard</h2>
-            <p className="text-muted-foreground text-sm max-w-lg mx-auto font-light">We bridge the gap between traditional mastery and modern convenience.</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-[family-name:var(--font-playfair)]">The KalaSync Protocol</h2>
+            <p className="text-muted-foreground text-sm max-w-lg mx-auto font-light">Elevating the standard of handmade commerce through trust and transparency.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div className="space-y-6">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+            <div className="glass-card p-10 space-y-6 group">
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                 <ShieldCheck className="text-primary w-6 h-6" />
               </div>
-              <h3 className="text-xl font-semibold">Verified Excellence</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed font-light">Every creator is hand-vetted for quality, reliability, and technical mastery.</p>
+              <h3 className="text-xl font-semibold">Verified Masters</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed font-light">Every artisan undergoes the Council Review to ensure only authentic mastery enters the collective.</p>
             </div>
 
-            <div className="space-y-6">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+            <div className="glass-card p-10 space-y-6 group">
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                 <Zap className="text-primary w-6 h-6" />
               </div>
-              <h3 className="text-xl font-semibold">Seamless Flow</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed font-light">From initial request to final masterpiece, our workflow ensures clarity at every step.</p>
+              <h3 className="text-xl font-semibold">Real-time Crafting</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed font-light">Experience the sync. Get milestone updates and direct artisan communication throughout the creation cycle.</p>
             </div>
 
-            <div className="space-y-6">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+            <div className="glass-card p-10 space-y-6 group">
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                 <Globe className="text-primary w-6 h-6" />
               </div>
-              <h3 className="text-xl font-semibold">Global Vision</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed font-light">Supporting local artisans while bringing their unique crafts to a worldwide audience.</p>
+              <h3 className="text-xl font-semibold">Legacy Proof</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed font-light">Every creation is digitally logged, preserving the history and authenticity of your bespoke masterpiece.</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Clean CTA Section */}
-      <section className="py-40 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-8 font-[family-name:var(--font-playfair)]">Begin Your Legacy</h2>
-          <p className="text-muted-foreground mb-12 max-w-xl mx-auto font-light">Whether you are a patron of fine craft or a master artisan, your place is here.</p>
+      {/* CTA Section */}
+      <section className="py-40 px-6 relative">
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <h2 className="text-4xl md:text-5xl font-bold mb-8 font-[family-name:var(--font-playfair)]">Sync with Excellence</h2>
+          <p className="text-muted-foreground mb-12 max-w-xl mx-auto font-light">Become part of the most exclusive ecosystem for handmade luxury.</p>
           <Link href="/register">
             <Button size="lg" className="btn-premium px-16">Get Started</Button>
           </Link>

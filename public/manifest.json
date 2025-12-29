@@ -1,6 +1,6 @@
 {
-    "name": "CreatorsAura",
-    "short_name": "CreatorsAura",
+    "name": "KalaSync",
+    "short_name": "KalaSync",
     "description": "Premium Marketplace for Master artisans and creators.",
     "start_url": "/",
     "display": "standalone",
