@@ -9,46 +9,59 @@ export default async function Home() {
   return (
     <div className="relative overflow-hidden">
       {/* Living Workshop Background Elements */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Maggam Work / Aari Embroidery 1 */}
-        <div className="absolute top-20 -left-20 w-64 h-64 md:w-96 md:h-96 opacity-10 blur-[1px] animate-float-slow rotate-12">
+      {/* Living Workshop: Choreographed Composition */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden mask-radial-edges">
+        {/* Maggam Work - Deep Focus (Top Left) */}
+        <div
+          className="absolute top-[10%] left-[-5%] w-72 h-72 md:w-[28rem] md:h-[28rem] animate-artisan-float"
+          style={{ '--duration': '14s', '--rotation': '8deg', '--opacity': '0.12', '--blur-min': '2px', '--blur-max': '4px' } as any}
+        >
           <img
             src="https://images.unsplash.com/photo-1621607512214-68297480165e?auto=format&fit=crop&q=80&w=800"
             alt="Handmade Maggam Work"
-            className="w-full h-full object-cover rounded-3xl grayscale"
+            className="w-full h-full object-cover rounded-[3rem] shadow-2xl"
           />
         </div>
 
-        {/* Women Stitching / Sewing 1 */}
-        <div className="absolute bottom-40 -right-20 w-64 h-64 md:w-96 md:h-96 opacity-10 blur-[1px] animate-float-delayed -rotate-12">
+        {/* Stitching Machine - Mid Focus (Bottom Right) */}
+        <div
+          className="absolute bottom-[15%] right-[-5%] w-64 h-64 md:w-[24rem] md:h-[24rem] animate-artisan-float"
+          style={{ '--duration': '11s', '--rotation': '-12deg', '--opacity': '0.1', '--delay': '2s', '--blur-min': '1px', '--blur-max': '3px' } as any}
+        >
           <img
             src="https://images.unsplash.com/photo-1517423568366-8b83523034fd?auto=format&fit=crop&q=80&w=800"
             alt="Artisan Stitching"
-            className="w-full h-full object-cover rounded-3xl grayscale"
+            className="w-full h-full object-cover rounded-[2rem] shadow-2xl"
           />
         </div>
 
-        {/* Maggam Work Detail 2 */}
-        <div className="absolute top-[60%] left-[5%] w-48 h-48 opacity-[0.05] blur-[2px] animate-pulse-slow">
-          <img
-            src="https://images.unsplash.com/photo-1623091410901-00e2d2689512?auto=format&fit=crop&q=80&w=800"
-            alt="Maggam Detail"
-            className="w-full h-full object-cover rounded-full grayscale"
-          />
-        </div>
-
-        {/* Women Stitching Detail 2 */}
-        <div className="absolute top-[10%] right-[15%] w-56 h-56 opacity-[0.08] blur-[1px] animate-float-slow -rotate-6">
+        {/* Tailoring Detail - Distant Focus (Top Right) */}
+        <div
+          className="absolute top-[15%] right-[10%] w-40 h-40 md:w-64 md:h-64 animate-artisan-float"
+          style={{ '--duration': '18s', '--rotation': '-5deg', '--opacity': '0.06', '--delay': '1s', '--blur-min': '3px', '--blur-max': '6px' } as any}
+        >
           <img
             src="https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?auto=format&fit=crop&q=80&w=800"
             alt="Professional Tailoring"
-            className="w-full h-full object-cover rounded-3xl grayscale"
+            className="w-full h-full object-cover rounded-full shadow-xl"
           />
         </div>
 
-        {/* Dynamic Light Rays */}
-        <div className="absolute top-0 right-[20%] w-[1px] h-full bg-gradient-to-b from-transparent via-primary/20 to-transparent rotate-12"></div>
-        <div className="absolute top-0 left-[30%] w-[1px] h-full bg-gradient-to-b from-transparent via-primary/10 to-transparent -rotate-12"></div>
+        {/* Maggam Detail - Close Focus (Bottom Left) */}
+        <div
+          className="absolute bottom-[20%] left-[15%] w-48 h-48 md:w-80 md:h-80 animate-artisan-float"
+          style={{ '--duration': '10s', '--rotation': '15deg', '--opacity': '0.08', '--delay': '3s', '--blur-min': '1px', '--blur-max': '2px' } as any}
+        >
+          <img
+            src="https://images.unsplash.com/photo-1623091410901-00e2d2689512?auto=format&fit=crop&q=80&w=800"
+            alt="Maggam Detail"
+            className="w-full h-full object-cover rounded-2xl shadow-xl"
+          />
+        </div>
+
+        {/* Dynamic Artisan Light Trails */}
+        <div className="absolute top-0 right-[25%] w-[1px] h-full bg-gradient-to-b from-transparent via-primary/10 to-transparent rotate-12 blur-[1px]"></div>
+        <div className="absolute top-0 left-[25%] w-[1px] h-full bg-gradient-to-b from-transparent via-primary/5 to-transparent -rotate-12 blur-[2px]"></div>
       </div>
 
       {/* Hero Section */}
