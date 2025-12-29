@@ -9,59 +9,57 @@ export default async function Home() {
   return (
     <div className="relative overflow-hidden">
       {/* Living Workshop Background Elements */}
-      {/* Living Workshop: Choreographed Composition */}
+      {/* Living Workshop: Cinematic Symphony of Craft */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden mask-radial-edges">
-        {/* Maggam Work - Deep Focus (Top Left) */}
+        {/* === LAYER 1: Distant Background (Deep Blur, Low Opacity) === */}
         <div
-          className="absolute top-[10%] left-[-5%] w-72 h-72 md:w-[28rem] md:h-[28rem] animate-artisan-float"
-          style={{ '--duration': '14s', '--rotation': '8deg', '--opacity': '0.12', '--blur-min': '2px', '--blur-max': '4px' } as any}
+          className="absolute top-[5%] left-[15%] w-96 h-96 animate-artisan-float"
+          style={{ '--duration': '22s', '--rotation': '-15deg', '--opacity': '0.04', '--blur-min': '4px', '--blur-max': '8px' } as any}
         >
-          <img
-            src="https://images.unsplash.com/photo-1621607512214-68297480165e?auto=format&fit=crop&q=80&w=800"
-            alt="Handmade Maggam Work"
-            className="w-full h-full object-cover rounded-[3rem] shadow-2xl"
-          />
+          <img src="/creator-pottery.png" alt="Pottery Background" className="w-full h-full object-cover rounded-full" />
         </div>
 
-        {/* Stitching Machine - Mid Focus (Bottom Right) */}
         <div
-          className="absolute bottom-[15%] right-[-5%] w-64 h-64 md:w-[24rem] md:h-[24rem] animate-artisan-float"
-          style={{ '--duration': '11s', '--rotation': '-12deg', '--opacity': '0.1', '--delay': '2s', '--blur-min': '1px', '--blur-max': '3px' } as any}
+          className="absolute top-[40%] right-[-10%] w-[32rem] h-[32rem] animate-artisan-float"
+          style={{ '--duration': '25s', '--rotation': '20deg', '--opacity': '0.03', '--blur-min': '6px', '--blur-max': '12px', '--delay': '2s' } as any}
         >
-          <img
-            src="https://images.unsplash.com/photo-1517423568366-8b83523034fd?auto=format&fit=crop&q=80&w=800"
-            alt="Artisan Stitching"
-            className="w-full h-full object-cover rounded-[2rem] shadow-2xl"
-          />
+          <img src="/creator-weaving.png" alt="Weaving Background" className="w-full h-full object-cover rounded-[10rem]" />
         </div>
 
-        {/* Tailoring Detail - Distant Focus (Top Right) */}
+        {/* === LAYER 2: Mid-Ground (Soft Focus, Contextual) === */}
         <div
-          className="absolute top-[15%] right-[10%] w-40 h-40 md:w-64 md:h-64 animate-artisan-float"
-          style={{ '--duration': '18s', '--rotation': '-5deg', '--opacity': '0.06', '--delay': '1s', '--blur-min': '3px', '--blur-max': '6px' } as any}
+          className="absolute top-[15%] right-[5%] w-64 h-64 md:w-[26rem] md:h-[26rem] animate-artisan-float"
+          style={{ '--duration': '16s', '--rotation': '-8deg', '--opacity': '0.08', '--blur-min': '2px', '--blur-max': '4px', '--delay': '1s' } as any}
         >
-          <img
-            src="https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?auto=format&fit=crop&q=80&w=800"
-            alt="Professional Tailoring"
-            className="w-full h-full object-cover rounded-full shadow-xl"
-          />
+          <img src="/creator-embroidery.png" alt="Embroidery Mid" className="w-full h-full object-cover rounded-[4rem] shadow-2xl" />
         </div>
 
-        {/* Maggam Detail - Close Focus (Bottom Left) */}
         <div
-          className="absolute bottom-[20%] left-[15%] w-48 h-48 md:w-80 md:h-80 animate-artisan-float"
-          style={{ '--duration': '10s', '--rotation': '15deg', '--opacity': '0.08', '--delay': '3s', '--blur-min': '1px', '--blur-max': '2px' } as any}
+          className="absolute bottom-[10%] left-[-5%] w-64 h-64 md:w-[24rem] md:h-[24rem] animate-artisan-float"
+          style={{ '--duration': '14s', '--rotation': '12deg', '--opacity': '0.07', '--blur-min': '1px', '--blur-max': '3px', '--delay': '4s' } as any}
         >
-          <img
-            src="https://images.unsplash.com/photo-1623091410901-00e2d2689512?auto=format&fit=crop&q=80&w=800"
-            alt="Maggam Detail"
-            className="w-full h-full object-cover rounded-2xl shadow-xl"
-          />
+          <img src="/creator-pottery.png" alt="Pottery Mid" className="w-full h-full object-cover rounded-3xl shadow-xl" />
         </div>
 
-        {/* Dynamic Artisan Light Trails */}
-        <div className="absolute top-0 right-[25%] w-[1px] h-full bg-gradient-to-b from-transparent via-primary/10 to-transparent rotate-12 blur-[1px]"></div>
-        <div className="absolute top-0 left-[25%] w-[1px] h-full bg-gradient-to-b from-transparent via-primary/5 to-transparent -rotate-12 blur-[2px]"></div>
+        {/* === LAYER 3: Foreground (Sharp Focus, Detailing) === */}
+        <div
+          className="absolute bottom-[20%] right-[10%] w-48 h-48 md:w-[20rem] md:h-[20rem] animate-artisan-float"
+          style={{ '--duration': '12s', '--rotation': '-5deg', '--opacity': '0.1', '--blur-min': '0px', '--blur-max': '1px', '--delay': '3s' } as any}
+        >
+          <img src="/creator-weaving.png" alt="Weaving Foreground" className="w-full h-full object-cover rounded-2xl shadow-2xl border border-white/5" />
+        </div>
+
+        {/* Central Macro Detail Shot */}
+        <div
+          className="absolute top-[60%] left-[20%] w-32 h-32 md:w-56 md:h-56 animate-artisan-float"
+          style={{ '--duration': '10s', '--rotation': '5deg', '--opacity': '0.09', '--blur-min': '0px', '--blur-max': '1px', '--delay': '5s' } as any}
+        >
+          <img src="/creator-embroidery.png" alt="Embroidery Detail" className="w-full h-full object-cover rounded-full border-2 border-primary/20 p-2 shadow-inner shadow-primary/10" />
+        </div>
+
+        {/* Dynamic Light Rays (The 'Sync' Lines) */}
+        <div className="absolute top-0 left-[35%] w-[1px] h-full bg-gradient-to-b from-transparent via-primary/15 to-transparent -rotate-12 blur-[1px] animate-pulse"></div>
+        <div className="absolute top-0 right-[35%] w-[1px] h-full bg-gradient-to-b from-transparent via-primary/10 to-transparent rotate-12 blur-[2px] animate-pulse"></div>
       </div>
 
       {/* Hero Section */}
