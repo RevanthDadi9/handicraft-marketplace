@@ -10,19 +10,37 @@ export default async function Home() {
     <div className="relative overflow-hidden">
       {/* Living Workshop Background Elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Animated Artisan Shot 1: Pottery */}
-        <div className="absolute top-20 -left-20 w-64 h-64 md:w-96 md:h-96 opacity-20 blur-[2px] animate-float-slow rotate-12">
-          <img src="/creator-pottery.png" alt="Artisan at work" className="w-full h-full object-cover rounded-3xl grayscale hover:grayscale-0 transition-all duration-1000" />
+        {/* Pottery Shot */}
+        <div className="absolute top-20 -left-20 w-64 h-64 md:w-96 md:h-96 opacity-10 blur-[1px] animate-float-slow rotate-12">
+          <img src="/creator-pottery.png" alt="Pottery" className="w-full h-full object-cover rounded-3xl grayscale" />
         </div>
 
-        {/* Animated Artisan Shot 2: Weaving */}
-        <div className="absolute bottom-40 -right-20 w-64 h-64 md:w-96 md:h-96 opacity-20 blur-[1px] animate-float-delayed -rotate-12">
-          <img src="/creator-weaving.png" alt="Weaving loom" className="w-full h-full object-cover rounded-3xl grayscale hover:grayscale-0 transition-all duration-1000" />
+        {/* Weaving Shot */}
+        <div className="absolute bottom-40 -right-20 w-64 h-64 md:w-96 md:h-96 opacity-10 blur-[1px] animate-float-delayed -rotate-12">
+          <img src="/creator-weaving.png" alt="Weaving" className="w-full h-full object-cover rounded-3xl grayscale" />
         </div>
 
-        {/* Animated Artisan Shot 3: Embroidery */}
-        <div className="absolute top-[60%] left-[10%] w-48 h-48 opacity-10 blur-[3px] animate-pulse-slow">
-          <img src="/creator-embroidery.png" alt="Embroidery work" className="w-full h-full object-cover rounded-full grayscale" />
+        {/* Embroidery Shot */}
+        <div className="absolute top-[60%] left-[5%] w-48 h-48 opacity-[0.05] blur-[2px] animate-pulse-slow">
+          <img src="/creator-embroidery.png" alt="Embroidery" className="w-full h-full object-cover rounded-full grayscale" />
+        </div>
+
+        {/* Stitching Machine Shot (Unsplash Premium Placeholder) */}
+        <div className="absolute top-[10%] right-[15%] w-56 h-56 opacity-[0.08] blur-[1px] animate-float-slow -rotate-6">
+          <img
+            src="https://images.unsplash.com/photo-1517423568366-8b83523034fd?auto=format&fit=crop&q=80&w=800"
+            alt="Stitching Machine"
+            className="w-full h-full object-cover rounded-3xl grayscale"
+          />
+        </div>
+
+        {/* Another Artisan Shot (Tailoring/Stitching) */}
+        <div className="absolute -bottom-10 left-[15%] w-72 h-72 opacity-[0.06] blur-[2px] animate-float-delayed rotate-3">
+          <img
+            src="https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?auto=format&fit=crop&q=80&w=800"
+            alt="Tailoring"
+            className="w-full h-full object-cover rounded-2xl grayscale"
+          />
         </div>
 
         {/* Dynamic Light Rays */}
