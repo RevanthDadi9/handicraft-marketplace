@@ -20,9 +20,19 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "AuraCraft | Premium Handmade Marketplace",
+  title: "CreatorsAura | Premium Handmade Marketplace",
   description: "Connect with the finest handmade service providers and creators.",
+  manifest: "/manifest.json",
+  appleWebApp: {
+    title: "CreatorsAura",
+    statusBarStyle: "black-translucent",
+    capable: true,
+  },
 };
+
+export const viewport = {
+  themeColor: "#000000",
+}
 
 export default async function RootLayout({
   children,
@@ -39,7 +49,7 @@ export default async function RootLayout({
         <AuthProvider>
           <nav className="fixed top-0 left-0 right-0 z-50 glass px-6 py-5 flex items-center justify-between border-b border-white/[0.06]">
             <Link href="/" className="text-xl font-bold tracking-[0.2em] font-[family-name:var(--font-playfair)]">
-              AURACRAFT
+              CREATORSAURA
             </Link>
             <div className="flex items-center gap-8">
               <Link href="/creators" className="text-xs font-bold uppercase tracking-widest text-white/50 hover:text-primary transition-colors">Artisans</Link>

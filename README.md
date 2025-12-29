@@ -1,4 +1,4 @@
-# Handicraft Marketplace
+# CreatorsAura Marketplace
 
 A two-sided marketplace built with Next.js 14, Tailwind CSS, and Prisma.
 

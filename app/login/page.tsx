@@ -72,7 +72,7 @@ export default function LoginPage() {
                                     <FormItem>
                                         <FormLabel className="text-[10px] font-bold tracking-widest uppercase text-white/40">Identity (Email)</FormLabel>
                                         <FormControl>
-                                            <Input placeholder="artisan@auracraft.com" {...field} className="bg-white/5 border-white/10 rounded-xl py-6 focus-visible:ring-primary/50" />
+                                            <Input placeholder="artisan@creatorsaura.in" {...field} className="bg-white/5 border-white/10 rounded-xl py-6 focus-visible:ring-primary/50" />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
