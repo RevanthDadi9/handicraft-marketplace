@@ -11,23 +11,23 @@ export default async function Home() {
       {/* Refined Hero Section */}
       <section className="relative pt-24 pb-32 overflow-hidden border-b border-white/[0.05]">
         <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
-          <div className="relative z-10 animate-reveal">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass border border-white/[0.1] mb-8 shadow-2xl">
+          <div className="relative z-10">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass border border-white/[0.1] mb-8 shadow-2xl animate-reveal">
               <Sparkles size={12} className="text-primary animate-glow" />
               <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/70">The New Era of Handcraft</span>
             </div>
 
-            <h1 className="text-6xl md:text-8xl font-medium tracking-tight mb-8 leading-[1.05] font-[family-name:var(--font-playfair)]">
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-medium tracking-tight mb-8 leading-[1.2] pb-2 font-[family-name:var(--font-playfair)] animate-reveal reveal-delay-1 bg-gradient-to-b from-white via-white to-white/70 bg-clip-text text-transparent">
               Where Every <br />
-              <span className="text-gold-gradient italic">Thread Details</span> <br />
+              <span className="text-gold-gradient italic pr-2">Thread Details</span> <br />
               A Legacy.
             </h1>
 
-            <p className="text-xl text-muted-foreground max-w-lg mb-12 leading-relaxed font-light">
+            <p className="text-lg md:text-xl text-muted-foreground/80 max-w-lg mb-12 leading-relaxed font-light animate-reveal reveal-delay-2">
               Connect with the most skilled artisans globally. A managed marketplace for those who value authenticity over mass production.
             </p>
 
-            <div className="flex flex-wrap gap-6 items-center">
+            <div className="flex flex-wrap gap-6 items-center animate-reveal reveal-delay-3">
               <Link href="/creators">
                 <Button size="lg" className="btn-premium px-10 h-14 text-base">
                   Explore The Collective <ArrowRight className="ml-2 w-5 h-5" />
