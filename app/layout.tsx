@@ -48,9 +48,8 @@ export default async function RootLayout({
       >
         <AuthProvider>
           <nav className="fixed top-0 left-0 right-0 z-50 glass px-6 py-5 flex items-center justify-between border-b border-white/[0.06]">
-            <Link href="/" className="logo-container group transition-all duration-300 hover:scale-102 active:scale-98">
+            <Link href="/" className="logo-container group">
               <div className="logo-icon-wrapper">
-                <div className="logo-aura"></div>
                 <img src="/icon.png" alt="Logo" className="logo-icon-animate" />
               </div>
               <span className="text-xl font-bold tracking-[0.2em] font-[family-name:var(--font-playfair)]">

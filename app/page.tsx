@@ -1,147 +1,156 @@
 import { auth } from "@/auth";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { ArrowRight, Sparkles, ShieldCheck, Zap, Globe } from "lucide-react";
+import { ArrowRight, Sparkles, ShieldCheck, Zap, Globe, Scissors, Palette, Heart } from "lucide-react";
 
 export default async function Home() {
   const session = await auth();
 
   return (
-    <div className="relative overflow-hidden">
-      {/* Living Workshop Background Elements */}
-      {/* Living Workshop: Cinematic Symphony of Craft */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden mask-radial-edges">
-        {/* === LAYER 1: Distant Background (Deep Blur, Low Opacity) === */}
-        <div
-          className="absolute top-[5%] left-[15%] w-96 h-96 animate-artisan-float"
-          style={{ '--duration': '22s', '--rotation': '-15deg', '--opacity': '0.04', '--blur-min': '4px', '--blur-max': '8px' } as any}
-        >
-          <img src="/creator-pottery.png" alt="Pottery Background" className="w-full h-full object-cover rounded-full" />
-        </div>
+    <div className="relative min-h-screen bg-background selection:bg-primary/20">
+      {/* Refined Hero Section */}
+      <section className="relative pt-24 pb-32 overflow-hidden border-b border-white/[0.05]">
+        <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+          <div className="relative z-10 animate-reveal">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass border border-white/[0.1] mb-8 shadow-2xl">
+              <Sparkles size={12} className="text-primary animate-glow" />
+              <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/70">The New Era of Handcraft</span>
+            </div>
 
-        <div
-          className="absolute top-[40%] right-[-10%] w-[32rem] h-[32rem] animate-artisan-float"
-          style={{ '--duration': '25s', '--rotation': '20deg', '--opacity': '0.03', '--blur-min': '6px', '--blur-max': '12px', '--delay': '2s' } as any}
-        >
-          <img src="/creator-weaving.png" alt="Weaving Background" className="w-full h-full object-cover rounded-[10rem]" />
-        </div>
+            <h1 className="text-6xl md:text-8xl font-medium tracking-tight mb-8 leading-[1.05] font-[family-name:var(--font-playfair)]">
+              Where Every <br />
+              <span className="text-gold-gradient italic">Thread Details</span> <br />
+              A Legacy.
+            </h1>
 
-        {/* === LAYER 2: Mid-Ground (Soft Focus, Contextual) === */}
-        <div
-          className="absolute top-[15%] right-[5%] w-64 h-64 md:w-[26rem] md:h-[26rem] animate-artisan-float"
-          style={{ '--duration': '16s', '--rotation': '-8deg', '--opacity': '0.08', '--blur-min': '2px', '--blur-max': '4px', '--delay': '1s' } as any}
-        >
-          <img src="/creator-embroidery.png" alt="Embroidery Mid" className="w-full h-full object-cover rounded-[4rem] shadow-2xl" />
-        </div>
+            <p className="text-xl text-muted-foreground max-w-lg mb-12 leading-relaxed font-light">
+              Connect with the most skilled artisans globally. A managed marketplace for those who value authenticity over mass production.
+            </p>
 
-        <div
-          className="absolute bottom-[10%] left-[-5%] w-64 h-64 md:w-[24rem] md:h-[24rem] animate-artisan-float"
-          style={{ '--duration': '14s', '--rotation': '12deg', '--opacity': '0.07', '--blur-min': '1px', '--blur-max': '3px', '--delay': '4s' } as any}
-        >
-          <img src="/creator-pottery.png" alt="Pottery Mid" className="w-full h-full object-cover rounded-3xl shadow-xl" />
-        </div>
-
-        {/* === LAYER 3: Foreground (Sharp Focus, Detailing) === */}
-        <div
-          className="absolute bottom-[20%] right-[10%] w-48 h-48 md:w-[20rem] md:h-[20rem] animate-artisan-float"
-          style={{ '--duration': '12s', '--rotation': '-5deg', '--opacity': '0.1', '--blur-min': '0px', '--blur-max': '1px', '--delay': '3s' } as any}
-        >
-          <img src="/creator-weaving.png" alt="Weaving Foreground" className="w-full h-full object-cover rounded-2xl shadow-2xl border border-white/5" />
-        </div>
-
-        {/* Central Macro Detail Shot */}
-        <div
-          className="absolute top-[60%] left-[20%] w-32 h-32 md:w-56 md:h-56 animate-artisan-float"
-          style={{ '--duration': '10s', '--rotation': '5deg', '--opacity': '0.09', '--blur-min': '0px', '--blur-max': '1px', '--delay': '5s' } as any}
-        >
-          <img src="/creator-embroidery.png" alt="Embroidery Detail" className="w-full h-full object-cover rounded-full border-2 border-primary/20 p-2 shadow-inner shadow-primary/10" />
-        </div>
-
-        {/* Dynamic Light Rays (The 'Sync' Lines) */}
-        <div className="absolute top-0 left-[35%] w-[1px] h-full bg-gradient-to-b from-transparent via-primary/15 to-transparent -rotate-12 blur-[1px] animate-pulse"></div>
-        <div className="absolute top-0 right-[35%] w-[1px] h-full bg-gradient-to-b from-transparent via-primary/10 to-transparent rotate-12 blur-[2px] animate-pulse"></div>
-      </div>
-
-      {/* Hero Section */}
-      <section className="relative pt-32 pb-40 px-6">
-        <div className="container mx-auto text-center relative z-10">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass border border-white/[0.08] mb-10 shadow-[0_0_20px_rgba(197,160,89,0.1)]">
-            <Sparkles size={12} className="text-primary animate-pulse" />
-            <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/50">Synchronizing Global Talent</span>
-          </div>
-
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight mb-10 leading-[1.1] font-[family-name:var(--font-playfair)]">
-            Mastery in <br />
-            <span className="text-gold-gradient italic">Perfect Sync</span>
-          </h1>
-
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-14 leading-relaxed font-light">
-            Welcome to <span className="text-white font-medium">KalaSync</span>. A curated collective where
-            traditional craftsmanship meets digital precision. Connect with the world's finest artisans.
-          </p>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
-            <Link href="/creators">
-              <Button size="lg" className="btn-premium">
-                Explore Artistry <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
-            </Link>
-            {!session && (
-              <Link href="/register">
-                <Button variant="outline" size="lg" className="btn-secondary">
-                  Join the Collective
+            <div className="flex flex-wrap gap-6 items-center">
+              <Link href="/creators">
+                <Button size="lg" className="btn-premium px-10 h-14 text-base">
+                  Explore The Collective <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </Link>
-            )}
+              {!session && (
+                <Link href="/register">
+                  <Button variant="outline" size="lg" className="btn-secondary px-10 h-14 text-base">
+                    Join as Artisan
+                  </Button>
+                </Link>
+              )}
+            </div>
+          </div>
+
+          <div className="relative animate-reveal reveal-delay-2 hidden lg:block">
+            <div className="relative aspect-[4/5] rounded-[3rem] overflow-hidden group shadow-[0_0_100px_rgba(0,0,0,0.5)]">
+              <img
+                src="/creator-embroidery.png"
+                alt="Master Artisan at Work"
+                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60"></div>
+              <div className="absolute bottom-12 left-12 right-12">
+                <div className="glass p-6 rounded-2xl border border-white/10 backdrop-blur-xl">
+                  <p className="text-white/60 text-xs uppercase tracking-widest font-bold mb-2">Featured Masterpiece</p>
+                  <p className="text-white text-xl font-[family-name:var(--font-playfair)]">Traditional Silk Maggam Detail</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Minimal Decorative Elements */}
+            <div className="absolute -top-8 -right-8 w-48 h-48 bg-primary/20 blur-[100px] -z-10 rounded-full animate-glow"></div>
+            <div className="absolute -bottom-12 -left-12 w-64 h-64 bg-primary/10 blur-[120px] -z-10 rounded-full animate-glow"></div>
           </div>
         </div>
       </section>
 
-      {/* Brand Pillar Section */}
-      <section className="py-32 px-6 border-y border-white/[0.05] bg-white/[0.01] relative overflow-hidden">
+      {/* The Boutique Collection */}
+      <section className="py-32 px-6">
         <div className="container mx-auto">
-          <div className="text-center mb-20">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-[family-name:var(--font-playfair)]">The KalaSync Protocol</h2>
-            <p className="text-muted-foreground text-sm max-w-lg mx-auto font-light">Elevating the standard of handmade commerce through trust and transparency.</p>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 mb-20">
+            <div className="animate-reveal">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 font-[family-name:var(--font-playfair)]">Artistry in Sync</h2>
+              <p className="text-muted-foreground text-lg max-w-xl font-light">From the rhythmic loom of weavers to the delicate touch of embroiderers, witness the synchronization of talent.</p>
+            </div>
+            <Link href="/creators" className="text-primary font-bold uppercase tracking-widest text-xs hover:opacity-80 transition-opacity">
+              View All Specialties →
+            </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div className="glass-card p-10 space-y-6 group">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                <ShieldCheck className="text-primary w-6 h-6" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="group animate-reveal reveal-delay-1">
+              <div className="aspect-[4/3] rounded-3xl overflow-hidden mb-6 relative">
+                <img src="/creator-pottery.png" alt="Pottery" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                <div className="absolute top-6 right-6 w-10 h-10 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  <Heart size={16} className="text-white" />
+                </div>
               </div>
-              <h3 className="text-xl font-semibold">Verified Masters</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed font-light">Every artisan undergoes the Council Review to ensure only authentic mastery enters the collective.</p>
+              <h3 className="text-xl font-semibold mb-2">Ceramic Mastery</h3>
+              <p className="text-sm text-muted-foreground font-light">Traditional wheel-spun pottery with contemporary glazes.</p>
             </div>
 
-            <div className="glass-card p-10 space-y-6 group">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                <Zap className="text-primary w-6 h-6" />
+            <div className="group animate-reveal reveal-delay-2">
+              <div className="aspect-[4/3] rounded-3xl overflow-hidden mb-6 relative">
+                <img src="/creator-weaving.png" alt="Weaving" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                <div className="absolute top-6 right-6 w-10 h-10 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  <Heart size={16} className="text-white" />
+                </div>
               </div>
-              <h3 className="text-xl font-semibold">Real-time Crafting</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed font-light">Experience the sync. Get milestone updates and direct artisan communication throughout the creation cycle.</p>
+              <h3 className="text-xl font-semibold mb-2">Heritage Weaving</h3>
+              <p className="text-sm text-muted-foreground font-light">Intricate patterns woven on restored vintage handlooms.</p>
             </div>
 
-            <div className="glass-card p-10 space-y-6 group">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                <Globe className="text-primary w-6 h-6" />
+            <div className="group animate-reveal reveal-delay-3">
+              <div className="aspect-[4/3] rounded-3xl overflow-hidden mb-6 relative border border-white/5 bg-white/5 flex items-center justify-center">
+                <div className="text-center p-8">
+                  <Palette className="w-12 h-12 text-primary mx-auto mb-4" />
+                  <p className="text-sm text-white/50">Coming Soon</p>
+                  <p className="text-lg font-medium">Bespoke Tailoring</p>
+                </div>
               </div>
-              <h3 className="text-xl font-semibold">Legacy Proof</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed font-light">Every creation is digitally logged, preserving the history and authenticity of your bespoke masterpiece.</p>
+              <h3 className="text-xl font-semibold mb-2">Digital Studio</h3>
+              <p className="text-sm text-muted-foreground font-light">Customize every stitch through our synchronization tools.</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-40 px-6 relative">
-        <div className="max-w-4xl mx-auto text-center relative z-10">
-          <h2 className="text-4xl md:text-5xl font-bold mb-8 font-[family-name:var(--font-playfair)]">Sync with Excellence</h2>
-          <p className="text-muted-foreground mb-12 max-w-xl mx-auto font-light">Become part of the most exclusive ecosystem for handmade luxury.</p>
+      {/* Philosophy Section */}
+      <section className="py-32 bg-secondary/30 border-y border-white/[0.05]">
+        <div className="container mx-auto px-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+            {[
+              { icon: ShieldCheck, title: "Verified Trust", desc: "Council-vetted artisans for unmatched quality." },
+              { icon: Zap, title: "Direct Sync", desc: "Real-time communication with the masters." },
+              { icon: Globe, title: "Global Reach", desc: "Bridging traditional crafts with global patrons." },
+              { icon: Scissors, title: "Tailored Focus", desc: "Bespoke services adjusted to your unique vision." }
+            ].map((item, idx) => (
+              <div key={idx} className="space-y-4 animate-reveal" style={{ animationDelay: `${idx * 0.1}s` }}>
+                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center">
+                  <item.icon className="text-primary w-6 h-6" />
+                </div>
+                <h4 className="text-lg font-semibold">{item.title}</h4>
+                <p className="text-sm text-muted-foreground font-light leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Final Call to Action */}
+      <section className="py-40 text-center relative overflow-hidden">
+        <div className="max-w-4xl mx-auto px-6 relative z-10 animate-reveal">
+          <h2 className="text-5xl md:text-7xl font-bold mb-10 font-[family-name:var(--font-playfair)]">Begin Your Legacy</h2>
+          <p className="text-xl text-muted-foreground mb-12 max-w-xl mx-auto font-light">Whether you are a patron of fine craft or a master artisan, your place is in the sync.</p>
           <Link href="/register">
-            <Button size="lg" className="btn-premium px-16">Get Started</Button>
+            <Button size="lg" className="btn-premium px-16 h-16 text-lg">Initialize Collaboration</Button>
           </Link>
         </div>
+
+        {/* Abstract Background Decoration */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 blur-[120px] rounded-full -z-10 animate-glow"></div>
       </section>
     </div>
   );
