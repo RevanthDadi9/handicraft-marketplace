@@ -1,7 +1,7 @@
 "use server";
 
 import { auth } from "@/auth"; // Assuming you have auth setup
-import { db } from "@/lib/db"; // Assuming you have a db client instance
+import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 
 export async function submitSupportRequest(formData: FormData) {
