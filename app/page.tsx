@@ -152,6 +152,45 @@ export default async function Home() {
         {/* Abstract Background Decoration */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 blur-[120px] rounded-full -z-10 animate-glow"></div>
       </section>
+      {/* Footer */}
+      <footer className="relative py-12 border-t border-white/[0.05] bg-black/40">
+        <div className="container mx-auto px-6">
+          <div className="grid md:grid-cols-4 gap-12 mb-12">
+            <div className="col-span-1 md:col-span-2">
+              <span className="text-xl font-bold tracking-[0.2em] font-[family-name:var(--font-playfair)] mb-4 block">
+                KALASYNC
+              </span>
+              <p className="text-muted-foreground font-light max-w-sm">
+                Empowering artisans, preserving heritage, and synchronizing the world with authenticity.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-bold uppercase tracking-widest text-xs mb-6 text-white/50">Platform</h4>
+              <ul className="space-y-4 text-sm font-light text-muted-foreground">
+                <li><Link href="/creators" className="hover:text-primary transition-colors">Artisans</Link></li>
+                <li><Link href="/testimonials" className="hover:text-primary transition-colors">Community Stories</Link></li>
+                <li><Link href="/register" className="hover:text-primary transition-colors">Join the Sync</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold uppercase tracking-widest text-xs mb-6 text-white/50">Support</h4>
+              <ul className="space-y-4 text-sm font-light text-muted-foreground">
+                <li><Link href="/support" className="hover:text-primary transition-colors">Help Center</Link></li>
+                <li><a href="mailto:creatorsauras@gmail.com" className="hover:text-primary transition-colors">creatorsauras@gmail.com</a></li>
+              </ul>
+            </div>
+          </div>
+          <div className="pt-8 border-t border-white/[0.05] flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-xs text-muted-foreground font-light">
+              &copy; {new Date().getFullYear()} KalaSync. All Rights Reserved.
+            </p>
+            <div className="flex gap-6">
+              <Link href="/privacy" className="text-xs text-muted-foreground hover:text-white transition-colors">Privacy Policy</Link>
+              <Link href="/terms" className="text-xs text-muted-foreground hover:text-white transition-colors">Terms of Service</Link>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }

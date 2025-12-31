@@ -1,0 +1,16 @@
+enum TestimonialStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+model Testimonial {
+  id        String            @id @default(uuid())
+  name      String
+  role      String?           @default("Patron") // e.g. "Patron", "Artisan"
+  content   String
+  rating    Int               @default(5)
+  images    String[]
+  status    TestimonialStatus @default(PENDING)
+  createdAt DateTime          @default(now())
+}
